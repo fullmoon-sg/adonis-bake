@@ -1,0 +1,24 @@
+@layout('base')
+@section('content')
+<form method="POST">
+  {{csrfField()}}
+  <h2>Update Post</h2>
+  <div>
+  <label class="form-label">Category</label>
+  <select class="form-control mb-3" name="category" value="{{bakeDessert.category}}">
+    <option value="AboutMe">About Me</option>
+    <option value="BakeDessert">Bakes & Dessert</option>
+    <option value="MainSide">Dishes - Main & Side</option>
+    <option value="FestiveBakeDish">Festive - Bakes & Dishes</option>
+    <option value="MadeToOrder">Made To Order</option>
+  </select>
+</div>
+<div>
+  <div>
+  <label class="form-label">Description</label>
+  </div>
+ <textarea name="description" value="{{bakeDessert.description}}" cols="260" rows="10"></textarea>
+</div>
+<input type="submit" value="Add" class="btn btn-primary mt-3"/>
+</form>
+@endsection

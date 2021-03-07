@@ -1,0 +1,33 @@
+@layout('base')
+@section('content')
+<form method="POST">
+  {{csrfField()}}
+<div class="posts-wrapper">
+  <div class="row">
+      <div class="col-sm-4 col-md-4 col-xs-12 single-post-wrapper">
+        <div class="card">
+          <div class="title text-center">
+            {{bakeDessert.category}}
+          </div><hr/>
+          <div class="content">
+            <div class="post-image">
+              <img src="{{bakeDessert.image_url}}" height="150px" width="150">
+            </div>
+            <div class="post-body text-center">
+              <div>
+              <label>Description : </label> {{bakeDessert.description}}
+              </div>
+            </div>
+             <div class= "alert alert-danger">
+              Confirm you want to delete ?
+              <input type="submit" class="btn btn-danger mr-3" value="Yes"/>
+               <a href="{{route('display_all_bakeDessert')}}" class="btn btn-success">Back</a>
+             </div>
+
+          </div>
+        </div>
+      </div>
+  </div>
+</div>
+</form>
+@endsection
