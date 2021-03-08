@@ -4,22 +4,22 @@
 const Schema = use('Schema')
 
 class BakeDessertSchema extends Schema {
-  up () {
+  up() {
     this.create('bake_desserts', (table) => {
       table.increments()
-      table.string('title',100).notNullable();
+      table.string('title', 100).notNullable();
       table.text('description').notNullable();
-      table.text('description_1').Nullable();
-      table.text('description_2').Nullable();
+      table.text('description_1').nullable();
+      table.text('description_2').nullable();
       table.string('image_url', 100);
-      table.string('image_url_1', 100).Nullable();
-      table.string('image_url_2', 100).Nullable();
-      table.string('image_url_3', 100).Nullable();
+      table.string('image_url_1', 100).nullable();
+      table.string('image_url_2', 100).nullable();
+      table.string('image_url_3', 100).nullable();
       table.timestamps()
     })
   }
 
-  down () {
+  down() {
     this.drop('bake_desserts')
   }
 }

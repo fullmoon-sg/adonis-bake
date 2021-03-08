@@ -12,6 +12,11 @@ async index({view}){
   })
 }
 
+async index_api({response}){
+  let bakeDessert = await BakeDessert.all();
+  response.json(bakeDessert)
+}
+
 create({view}){
   return view.render('bakeDessert/create', {
     cloudinaryName : Config.get('cloudinary.name'),
@@ -25,8 +30,14 @@ async processCreate({request,response}){
   let body = request.post();
   let bakeDessert = new BakeDessert();
   bakeDessert.category = body.category;
+  bakeDessert.title = body.title;
   bakeDessert.description = body.description;
+   bakeDessert.description_1 = body.description_1;
+  bakeDessert.description_2 = body.description_2;
   bakeDessert.image_url = body.image_url;
+  bakeDessert.image_url_1 = body.image_url_1;
+   bakeDessert.image_url_2 = body.image_url_2;
+    bakeDessert.image_url_3 = body.image_url_3;
   await bakeDessert.save();
   return response.redirect('/bake-dessert')
 }
