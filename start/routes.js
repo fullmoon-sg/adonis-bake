@@ -30,3 +30,5 @@ Route.post('bake-dessert/:id/delete','BakeDessertController.processDelete')
 
 //Cloudinary path
 Route.get('cloudinary/sign','CloudinaryController.sign').as('cloudinary_sign')
+
+Route.post('api/bake-dessert', 'BakeDessertController.submitPost')
