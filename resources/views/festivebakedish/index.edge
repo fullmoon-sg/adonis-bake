@@ -1,0 +1,15 @@
+@layout('base')
+@section('content')
+@each(fBD in festiveBakeDish)
+<div class="card" style="width: 500px;">
+  <img class="card-img-top" src="{{bD.image_url}}" alt="Card image cap">
+  <div class="card-body">
+    <h5 class="card-title">{{fBD.title}}</h5>
+    <p class="card-text">{{fBD.description}}</p>
+    <p class="card-text">{{fBD.description_1}}</p>
+     <img class="card-img-top" src="{{fBD.image_url_1}}" alt="">
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+  </div>
+</div>
+@endeach
+@endsection
