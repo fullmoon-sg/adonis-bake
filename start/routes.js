@@ -43,3 +43,7 @@ Route.get('cloudinary/sign','CloudinaryController.sign').as('cloudinary_sign')
 Route.post('api/bake-dessert', 'BakeDessertController.submitPost')
 Route.post('api/dishes','DishController.submitPost')
 Route.post('api/festive-bakes-dishes','FestiveController.submitPost')
+
+// API Login & Register
+Route.post('api/user/register','LoginController.register')
+Route.post('api/user/login','LoginController.login')
