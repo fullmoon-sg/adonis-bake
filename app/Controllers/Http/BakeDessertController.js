@@ -1,6 +1,7 @@
-'use strict'
+ 'use strict'
 
 const BakeDessert = use('App/Models/BakeDessert')
+const User = use('App/Models/User')
 const Config = use('Config')
 
 class BakeDessertController {
@@ -58,6 +59,7 @@ class BakeDessertController {
     return response.redirect('/bake-dessert')
   }
 
+
   async delete({ view, params }) {
     let bakeDessert = await BakeDessert.find(params.id);
     return view.render('bakeDessert/delete', {
@@ -85,6 +87,30 @@ class BakeDessertController {
     bakeDessert.image_url_3 = body.image_url_3;
     await bakeDessert.save();
     return response.redirect('../bake-dessert')
+  }
+
+  // getBlogData({auth}){
+  //   console.log('everything ok')
+  //   let user = await auth.authenticator('api').getUser();
+  //   console.log('passed')
+  // }
+
+  async updatePost({request,auth,response,params}){
+    let user = await auth.authenticator('api').getUser();
+    let bake_dessert_update = await BakeDessert.find(params.id);
+    let updateData = request.post();
+    bake_dessert_update.category = updateData.category;
+    bake_dessert_update.title = updateData.title;
+    bake_dessert_update.description = updateData.description;
+    bake_dessert_update.description_1 = updateData.description_1;
+    bake_dessert_update.description_2 = updateData.description_2;
+    bake_dessert_update.image_url = updateData.image_url;
+    bake_dessert_update.image_url_1 = updateData.image_url_1;
+    bake_dessert_update.image_url_2 = updateData.image_url_2;
+    bake_dessert_update.image_url_3 = updateData.image_url_3;
+    console.log(bake_dessert_update.title)
+    await bake_dessert_update.save();
+    return response.json("Save successfully");
   }
 }
 

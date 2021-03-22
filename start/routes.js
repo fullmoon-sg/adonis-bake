@@ -47,3 +47,7 @@ Route.post('api/festive-bakes-dishes','FestiveController.submitPost')
 // API Login & Register
 Route.post('api/user/register','LoginController.register')
 Route.post('api/user/login','LoginController.login')
+
+//Fetch and Update Blog data
+// Route.get('api/Bread/title','BakeDessertController.getBlogData')
+Route.put('api/bake-dessert/:id/updateBlog','BakeDessertController.updatePost')
