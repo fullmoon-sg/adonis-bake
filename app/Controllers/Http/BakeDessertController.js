@@ -89,11 +89,6 @@ class BakeDessertController {
     return response.redirect('../bake-dessert')
   }
 
-  // getBlogData({auth}){
-  //   console.log('everything ok')
-  //   let user = await auth.authenticator('api').getUser();
-  //   console.log('passed')
-  // }
 
   async updatePost({request,auth,response,params}){
     let user = await auth.authenticator('api').getUser();
@@ -111,6 +106,13 @@ class BakeDessertController {
     console.log(bake_dessert_update.title)
     await bake_dessert_update.save();
     return response.json("Save successfully");
+  }
+
+  async deletePost({params,response}){
+    let user = await auth.authenticator('api').getUser();
+    let bake_dessert_item = await BakeDessert.find(params.id);
+    await bake_dessert_item.delete();
+    return response.json("Successfully Deleted")
   }
 }
 

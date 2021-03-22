@@ -1,6 +1,7 @@
 'use strict'
 
 const FestiveBakeDish = use('App/Models/FestiveBakeDish');
+const User = use('App/Models/User')
 const Config = use('Config')
 
 
@@ -16,6 +17,23 @@ class FestiveController {
   async index_api({response}){
     let festiveBakeDish = await FestiveBakeDish.all();
     response.json(festiveBakeDish)
+  }
+
+   async updatePost({request,auth,response,params}){
+    let user = await auth.authenticator('api').getUser();
+    let festive_update = await FestiveBakeDish.find(params.id);
+    let updateData = request.post();
+    festive_update.category = updateData.category;
+    festive_update.title = updateData.title;
+    festive_update.description = updateData.description;
+    festive_update.description_1 = updateData.description_1;
+    festive_update.description_2 = updateData.description_2;
+    festive_update.image_url = updateData.image_url;
+    festive_update.image_url_1 = updateData.image_url_1;
+    festive_update.image_url_2 = updateData.image_url_2;
+    festive_update.image_url_3 = updateData.image_url_3;
+    await festive_update.save();
+    return response.json("Save successfully");
   }
 
   async submitPost({ request, response }) {

@@ -49,5 +49,9 @@ Route.post('api/user/register','LoginController.register')
 Route.post('api/user/login','LoginController.login')
 
 //Fetch and Update Blog data
-// Route.get('api/Bread/title','BakeDessertController.getBlogData')
 Route.put('api/bake-dessert/:id/updateBlog','BakeDessertController.updatePost')
+Route.put('api/dish/:id/updateBlog','DishController.updatePost')
+Route.put('api/festive-bake-dishes/:id/updateBlog','FestiveController.updatePost')
+
+//Delete Blog
+Route.post('api/bake-dessert/:id/deleteBlog','BakeDessertController.deletePost')
