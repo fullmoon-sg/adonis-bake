@@ -1,15 +1,17 @@
 @layout('base')
 @section('content')
 @each(bD in bakeDessert)
-<div class="card" style="width: 500px;">
+
+<div class="card" style="width: 600px; margin: 20px;">
   <img class="card-img-top" src="{{bD.image_url}}" alt="Card image cap">
   <div class="card-body">
     <h5 class="card-title">{{bD.title}}</h5>
     <p class="card-text">{{bD.description}}</p>
     <p class="card-text">{{bD.description_1}}</p>
      <img class="card-img-top" src="{{bD.image_url_1}}" alt="">
-    <a href="#" class="btn btn-primary">Go somewhere</a>
   </div>
+
 </div>
+
 @endeach
 @endsection

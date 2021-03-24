@@ -1,0 +1,15 @@
+@layout('base')
+@section('content')
+@each(ms in mainSide)
+<div class="card" style="width: 600px; margin: 20px;">
+  <img class="card-img-top" src="{{ms.image_url}}" alt="Card image cap">
+  <div class="card-body">
+    <h5 class="card-title">{{ms.title}}</h5>
+    <p class="card-text">{{ms.description}}</p>
+    <p class="card-text">{{ms.description_1}}</p>
+     <img class="card-img-top" src="{{ms.image_url_1}}" alt="">
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+  </div>
+</div>
+@endeach
+@endsection

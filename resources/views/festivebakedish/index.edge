@@ -1,7 +1,9 @@
+
 @layout('base')
 @section('content')
 @each(fBD in festiveBakeDish)
-<div class="card" style="width: 500px;">
+
+<div class="card" style="width: 600px; margin: 20px;">
   <img class="card-img-top" src="{{bD.image_url}}" alt="Card image cap">
   <div class="card-body">
     <h5 class="card-title">{{fBD.title}}</h5>
@@ -13,3 +15,4 @@
 </div>
 @endeach
 @endsection
+

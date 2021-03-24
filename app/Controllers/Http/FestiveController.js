@@ -36,6 +36,13 @@ class FestiveController {
     return response.json("Save successfully");
   }
 
+  async deletePost({params, auth, response}){
+    let user = await auth.authenticator('api').getUser();
+    let festive = await FestiveBakeDish.find(params.id);
+    await festive.delete();
+    return response.json('Successfully Deleted')
+  }
+
   async submitPost({ request, response }) {
     let body = request.post();
     let festiveBakeDish = new FestiveBakeDish();

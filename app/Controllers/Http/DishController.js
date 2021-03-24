@@ -36,6 +36,13 @@ class DishController {
     return response.json("Save successfully");
   }
 
+  async deletePost({params, auth, response}){
+    let user = await auth.authenticator('api').getUser();
+    let dishes = await MainSide.find(params.id);
+    await dishes.delete();
+    return response.json("Successfully Deleted");
+  }
+
   async submitPost({ request, response }) {
     let body = request.post();
     let mainSide = new MainSide();

@@ -6,10 +6,17 @@ const Config = use('Config')
 
 class BakeDessertController {
 
-  async index({ view }) {
+  // async index({ view }) {
+  //   let bakeDessert = await BakeDessert.all();
+  //   return view.render('bakeDessert/index', {
+  //     bakeDessert: bakeDessert.toJSON()
+  //   })
+  // }
+
+  async index ({ view }){
     let bakeDessert = await BakeDessert.all();
     return view.render('bakeDessert/index', {
-      bakeDessert: bakeDessert.toJSON()
+      bakeDessert : bakeDessert.toJSON()
     })
   }
 
@@ -44,14 +51,14 @@ class BakeDessertController {
   }
 
   async update({ view, params }) {
-    let bakeDessert = await BakeDessert.find(params.id);
+    let bakeDessert = await BakeDessert.find(params.dB_id);
     return view.render('bakeDessert/update', {
-      bakeDessert: bakeDessert.toJSON()
+      bakeDessert: bakeDessert
     })
   }
 
   async processUpdate({ request, response, params }) {
-    let bakeDessert = await BakeDessert.find(params.id);
+    let bakeDessert = await BakeDessert.find(parms.dB_id);
     let updateData = request.post();
     bakeDessert.category = updateData.category;
     bakeDessert.description = updateData.description;
@@ -61,14 +68,14 @@ class BakeDessertController {
 
 
   async delete({ view, params }) {
-    let bakeDessert = await BakeDessert.find(params.id);
+    let bakeDessert = await BakeDessert.find(params.dB_id);
     return view.render('bakeDessert/delete', {
-      bakeDessert: bakeDessert.toJSON()
+      bakeDessert: bakeDessert
     })
   }
 
   async processDelete({ params, response }) {
-    let bakeDessert = await BakeDessert.find(params.id);
+    let bakeDessert = await BakeDessert.find(params.dB_id );
     await bakeDessert.delete();
     return response.redirect('/bake-dessert')
   }
@@ -108,7 +115,7 @@ class BakeDessertController {
     return response.json("Save successfully");
   }
 
-  async deletePost({params,response}){
+  async deletePost({params,auth, response}){
     let user = await auth.authenticator('api').getUser();
     let bake_dessert_item = await BakeDessert.find(params.id);
     await bake_dessert_item.delete();
