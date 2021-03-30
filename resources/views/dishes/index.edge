@@ -8,7 +8,9 @@
     <p class="card-text">{{ms.description}}</p>
     <p class="card-text">{{ms.description_1}}</p>
      <img class="card-img-top" src="{{ms.image_url_1}}" alt="">
-    <a href="#" class="btn btn-primary">Go somewhere</a>
+       <a href="{{route('create_dishes', {id:ms.id})}}" class="btn btn-info mt-2 mb-2">Create Blog</a>
+     <a href="{{route('update_dishes', {id:ms.id})}}" class="btn btn-success mt-2 mb-2">Edit Blog</a>
+      <a href="{{route('delete_dishes', {id:ms.id})}}" class="btn btn-danger mt-2 mb-2">Delete Blog</a>
   </div>
 </div>
 @endeach

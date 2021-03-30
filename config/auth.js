@@ -17,6 +17,7 @@ module.exports = {
   |
   */
   authenticator: 'session',
+  authenticator: 'admin',
 
   /*
   |--------------------------------------------------------------------------
@@ -90,5 +91,33 @@ module.exports = {
     scheme: 'api',
     uid: 'username',
     password: 'password'
+  },
+
+  admin: {
+    serializer: 'lucid',
+    model: 'App/Models/Admin',
+    scheme: 'api',
+    uid: 'username',
+    password: 'password',
+    options:{
+      //DIFF APP KEY
+      secret: Env.get("APP_KEY_AUTH_ADMIN"),
+      expiresIn : 3600000
+    }
+  },
+
+  user: {
+    serializer: 'lucid',
+    model: 'App/Models/User',
+    scheme: 'api',
+    uid: 'username',
+    password: 'password',
+    options: {
+       //DIFF APP KEY
+      secret : Env.get("APP_KEY"),
+      expiresIn : 3600000
+    }
   }
+
+
 }

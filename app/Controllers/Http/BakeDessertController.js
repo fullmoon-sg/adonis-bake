@@ -6,13 +6,7 @@ const Config = use('Config')
 
 class BakeDessertController {
 
-  // async index({ view }) {
-  //   let bakeDessert = await BakeDessert.all();
-  //   return view.render('bakeDessert/index', {
-  //     bakeDessert: bakeDessert.toJSON()
-  //   })
-  // }
-
+  //Adonis View
   async index ({ view }){
     let bakeDessert = await BakeDessert.all();
     return view.render('bakeDessert/index', {
@@ -20,10 +14,7 @@ class BakeDessertController {
     })
   }
 
-  async index_api({ response }) {
-    let bakeDessert = await BakeDessert.all();
-    response.json(bakeDessert)
-  }
+  //Adonis Create Post
 
   create({ view }) {
     return view.render('bakeDessert/create', {
@@ -50,36 +41,52 @@ class BakeDessertController {
     return response.redirect('/bake-dessert')
   }
 
+  //Adonis Update Post
+
   async update({ view, params }) {
-    let bakeDessert = await BakeDessert.find(params.dB_id);
+    let bakeDessert = await BakeDessert.find(params.id);
     return view.render('bakeDessert/update', {
       bakeDessert: bakeDessert
     })
   }
 
   async processUpdate({ request, response, params }) {
-    let bakeDessert = await BakeDessert.find(parms.dB_id);
+    let bakeDessert = await BakeDessert.find(parms.id);
     let updateData = request.post();
     bakeDessert.category = updateData.category;
+    bakeDessert.title = updateData.title;
     bakeDessert.description = updateData.description;
+    bakeDessert.description_1 = updateData.description_1;
+    bakeDessert.description_2 = updateData.description_2;
+    bakeDessert.image_url = updateData.image_url;
+    bakeDessert.image_url_1 = updateData.image_url_1;
+    bakeDessert.image_url_2 = updateData.image_url_2;
+    bakeDessert.image_url_3 = updateData.image_url_3;
     bakeDessert.save();
     return response.redirect('/bake-dessert')
   }
 
-
+//Adonis JS delete post
   async delete({ view, params }) {
-    let bakeDessert = await BakeDessert.find(params.dB_id);
+    let bakeDessert = await BakeDessert.find(params.id);
     return view.render('bakeDessert/delete', {
       bakeDessert: bakeDessert
     })
   }
 
   async processDelete({ params, response }) {
-    let bakeDessert = await BakeDessert.find(params.dB_id );
+    let bakeDessert = await BakeDessert.find(params.id );
     await bakeDessert.delete();
     return response.redirect('/bake-dessert')
   }
 
+   //Adonis API to ReactJs view
+  async index_api({ response }) {
+    let bakeDessert = await BakeDessert.all();
+    response.json(bakeDessert)
+  }
+
+  //Create new Post via ReactJS
   async submitPost({ request, response }) {
     let body = request.post();
     let bakeDessert = new BakeDessert();
@@ -96,7 +103,7 @@ class BakeDessertController {
     return response.redirect('../bake-dessert')
   }
 
-
+//Update Post via ReactJS
   async updatePost({request,auth,response,params}){
     let user = await auth.authenticator('api').getUser();
     let bake_dessert_update = await BakeDessert.find(params.id);
@@ -114,6 +121,8 @@ class BakeDessertController {
     await bake_dessert_update.save();
     return response.json("Save successfully");
   }
+
+   //Delete via ReactJS
 
   async deletePost({params,auth, response}){
     let user = await auth.authenticator('api').getUser();

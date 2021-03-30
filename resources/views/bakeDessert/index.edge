@@ -5,10 +5,13 @@
 <div class="card" style="width: 600px; margin: 20px;">
   <img class="card-img-top" src="{{bD.image_url}}" alt="Card image cap">
   <div class="card-body">
-    <h5 class="card-title">{{bD.title}}</h5>
+    <h5 class="card-title">{{bD_id}}{{bD.title}}</h5>
     <p class="card-text">{{bD.description}}</p>
     <p class="card-text">{{bD.description_1}}</p>
      <img class="card-img-top" src="{{bD.image_url_1}}" alt="">
+     <a href="{{route('create_bakeDessert', {id:bD.id})}}" class="btn btn-info mt-2 mb-2">Create Blog</a>
+    <a href="{{route('update_bakeDessert', {id:bD.id})}}" class="btn btn-success mt-2 mb-2">Edit Blog</a>
+      <a href="{{route('delete_bakeDessert', {id:bD.id})}}" class="btn btn-danger mt-2 mb-2">Delete Blog</a>
   </div>
 
 </div>
