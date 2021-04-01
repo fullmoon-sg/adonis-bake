@@ -2,12 +2,13 @@
 
 const BakeDessert = use('App/Models/BakeDessert')
 const User = use('App/Models/User')
+const Admin = use*'App/Models/Admin'
 const Config = use('Config')
 
 class BakeDessertController {
 
   //Adonis View
-  async index ({ view }){
+  async index ({ view}){
     let bakeDessert = await BakeDessert.all();
     return view.render('bakeDessert/index', {
       bakeDessert : bakeDessert.toJSON()
@@ -51,7 +52,7 @@ class BakeDessertController {
   }
 
   async processUpdate({ request, response, params }) {
-    let bakeDessert = await BakeDessert.find(parms.id);
+    let bakeDessert = await BakeDessert.find(params.id);
     let updateData = request.post();
     bakeDessert.category = updateData.category;
     bakeDessert.title = updateData.title;

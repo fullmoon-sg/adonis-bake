@@ -38,7 +38,7 @@ class FestiveController {
     festive.image_url_2 = body.image_url_2;
     festive.image_url_3 = body.image_url_3;
     await festive.save();
-    return response.redirect('/display_all_festive')
+    return response.redirect('/festive-bake-dishes')
   }
 
   //Adonis JS update
@@ -62,7 +62,7 @@ class FestiveController {
     festive.image_url_2 = updateData.image_url_2;
     festive.image_url_3 = updateData.image_url_3;
     festive.save();
-    return response.redirect('/display_all_festive')
+    return response.redirect('/festive-bake-dishes')
   }
 
   //Adonis JS delete
@@ -76,7 +76,7 @@ class FestiveController {
   async processDelete({ params, response }) {
     let  festive = await FestiveBakeDish.find(params.id );
     await  festive.delete();
-    return response.redirect('/display_all_festive')
+    return response.redirect('/festive-bake-dishes')
   }
 
 

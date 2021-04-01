@@ -16,7 +16,8 @@ module.exports = {
   | Available Serializers - lucid, database
   |
   */
-  authenticator: 'session',
+  // authenticator: 'session',
+  authenticator: 'api',
   authenticator: 'admin',
 
   /*
@@ -96,7 +97,7 @@ module.exports = {
   admin: {
     serializer: 'lucid',
     model: 'App/Models/Admin',
-    scheme: 'api',
+    scheme: 'session',
     uid: 'username',
     password: 'password',
     options:{
@@ -104,7 +105,7 @@ module.exports = {
       secret: Env.get("APP_KEY_AUTH_ADMIN"),
       expiresIn : 3600000
     }
-  },
+   },
 
   user: {
     serializer: 'lucid',

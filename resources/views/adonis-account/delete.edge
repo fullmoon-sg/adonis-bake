@@ -1,0 +1,30 @@
+@layout('base')
+@section('content')
+<form method="POST">
+  {{csrfField()}}
+  <div style=" display: flex; flex-direction: column">
+<table class="table" style="width: 1200px; margin: 75px auto 20px 0">
+  <thead>
+    <tr>
+      <th scope="col">No.</th>
+      <th scope="col">Username</th>
+      <th scope="col">Created Date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">{{account.id}}</th>
+      <td>{{account.username}}</td>
+      <td>{{account.created_at}}</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+  <div class= "alert alert-danger">
+              Confirm you want to delete ?
+              <input type="submit" class="btn btn-danger mr-3" value="Yes"/>
+               <a href="{{route('display_adonis_accounts')}}" class="btn btn-success">Back</a>
+             </div>
+          </div>
+</form>
+  @endsection

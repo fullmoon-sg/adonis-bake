@@ -6,14 +6,14 @@ class LoginController {
 
   async index ({view}){
     let users = await User.all();
-    return view.render('account/index', {
+    return view.render('react-account/index', {
       accounts : users.toJSON()
     })
   }
 
   async create({ view}){
     let user = await User.all();
-    return view.render('account/create', {
+    return view.render('react-account/create', {
       accounts : user.toJSON()
     })
   }
@@ -25,7 +25,7 @@ class LoginController {
     user.email = body.email;
     user.password = body.password;
     await user.save();
-    return response.redirect('/account')
+    return response.redirect('/react-account')
  }
 
   async register({ request, response }) {
@@ -55,15 +55,15 @@ class LoginController {
   //Adonis JS delete
    async delete({ view, params }) {
     let  user = await User.find(params.id);
-    return view.render('account/delete', {
+    return view.render('react-account/delete', {
        account :  user
     })
   }
 
   async processDelete({ params, response }) {
-    let  user = await User.find(params.id );
-    await  user.delete();
-    return response.redirect('/account')
+    let  user = await User.find(params.id);
+    await user.delete();
+    return response.redirect('/react-account')
   }
 
 }
