@@ -35,9 +35,6 @@ class AdminController {
         session.flash({ 'notification' : "You have registered succesfully" })
         response.route('/bake-dessert')
       }
-
-      // await auth.authenticator('admin').attempt(body.username, body.password)
-      // response.route('UsersList')
     }
   }
 
@@ -56,19 +53,9 @@ class AdminController {
   }
 
   async logout({ request, response, auth }) {
-
     await auth.logout()
     return response.route('/')
-
-    //     const refreshToken = request.input('refreshToken');
-
-    //     await auth
-    //         .authenticator('api')
-    //         .revokeTokens([refreshToken], true)
-    //     return response.route('loginPage')
-    // }
   }
-
 }
 
 
