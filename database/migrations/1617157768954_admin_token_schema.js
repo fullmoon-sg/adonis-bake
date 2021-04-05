@@ -4,10 +4,10 @@
 const Schema = use('Schema')
 
 class AdminTokenSchema extends Schema {
-  up () {
+  up() {
     this.create('admin_tokens', (table) => {
       table.increments()
-        table.integer('admin_id').unsigned().references('id').inTable('admins')
+      table.integer('admin_id').unsigned().references('id').inTable('admins')
       table.string('token', 255).notNullable().unique().index()
       table.string('type', 80).notNullable()
       table.boolean('is_revoked').defaultTo(false)
@@ -15,7 +15,7 @@ class AdminTokenSchema extends Schema {
     })
   }
 
-  down () {
+  down() {
     this.drop('admin_tokens')
   }
 }

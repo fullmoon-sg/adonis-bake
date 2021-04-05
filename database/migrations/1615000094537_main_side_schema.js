@@ -8,8 +8,14 @@ class MainSideSchema extends Schema {
     this.create('main_sides', (table) => {
       table.increments()
        table.string('category',100).notNullable();
+      table.string('title',100).notNullable();
       table.text('description').notNullable();
-      table.string('image_url', 100);
+      table.text('description_1').Nullable();
+      table.text('description_2').Nullable();
+      table.string('image_url', 100).Nullable();
+      table.string('image_url_1', 100).Nullable();
+      table.string('image_url_2', 100).Nullable();
+      table.string('image_url_3', 100).Nullable();
       table.timestamps()
     })
   }
